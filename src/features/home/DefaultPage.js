@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Button } from 'antd';
 import { RedditList } from './';
 import * as actions from './redux/actions';
 
@@ -34,22 +35,22 @@ export class DefaultPage extends Component {
         <p>Here are two simple demos for your quick reference. You can open the browser dev tools to see Redux action logs.</p>
         <p className="section-title">To see how Redux works in the project, here is the demo of a simple counter:</p>
         <div className="demo-count">
-          <button className="btn-minus-one" onClick={counterMinusOne} disabled={count === 0}>-</button>
+          <Button className="btn-minus-one" onClick={counterMinusOne} disabled={count === 0}>-</Button>
           <label>{count}</label>
-          <button className="btn-plus-one" onClick={counterPlusOne}>+</button>
-          <button className="btn-reset-counter" onClick={resetCounter}>Reset</button>
+          <Button className="btn-plus-one" onClick={counterPlusOne}>+</Button>
+          <Button className="btn-reset-counter" onClick={resetCounter}>Reset</Button>
         </div>
 
         <p className="section-title">To see how async flow works, here is an example of fetching reddit reactjs topics:</p>
         <div className="demo-reddit">
-          <button className="btn-fetch-reddit" disabled={fetchRedditReactjsListPending} onClick={fetchRedditReactjsList}>
+          <Button className="btn-fetch-reddit" disabled={fetchRedditReactjsListPending} onClick={fetchRedditReactjsList}>
             {fetchRedditReactjsListPending ? 'Fetching...' : 'Fetch reactjs topics'}
-          </button>
+          </Button>
           {
             fetchRedditReactjsListError &&
-              <div className="fetch-list-error">
-                Failed to load: {fetchRedditReactjsListError.toString()}
-              </div>
+            <div className="fetch-list-error">
+              Failed to load: {fetchRedditReactjsListError.toString()}
+            </div>
           }
           <RedditList list={redditReactjsList} />
         </div>
